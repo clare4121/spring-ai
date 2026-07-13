@@ -1,0 +1,29 @@
+# Spring AI Quick Start Configuration
+# 版本兼容性: Spring Boot 3.2.5 + Spring AI 1.0.0 + Java 17
+server:
+  port: 8082
+spring:
+  application:
+    name: spring-ai-quickstart
+
+  # DeepSeek配置
+  ai:
+    deepseek:
+      api-key: sk-225e335a1750437e92c1be16d59b70aa
+      base-url: https://api.deepseek.com
+      chat:
+        options:
+          model: deepseek-chat
+
+    # 千问(DashScope)配置
+    dashscope:
+      api-key: sk-ws-H.EMEIPME.JxGX.MEQCIEX71JWr2ra1PjltqxUQ8ISnrfeS8SC4xWt1n-nTj7JFAiB4ryg_oYCL9ycxCI4RuM-eLnuaY7aB293kX3Jrll-CEg
+      base-url: https://dashscope.aliyuncs.com
+      chat:
+        options:
+          model: qwen-plus
+
+
+logging:
+  level:
+    org.springframework.ai: DEBUG

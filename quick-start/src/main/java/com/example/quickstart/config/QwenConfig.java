@@ -1,7 +1,9 @@
 package com.example.quickstart.config;
 
 import com.alibaba.cloud.ai.dashscope.api.DashScopeApi;
+import com.alibaba.cloud.ai.dashscope.api.DashScopeImageApi;
 import com.alibaba.cloud.ai.dashscope.chat.DashScopeChatModel;
+import com.alibaba.cloud.ai.dashscope.image.DashScopeImageModel;
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -28,15 +30,25 @@ public class QwenConfig {
                 .build();
     }
 
+
     @Bean
     public DashScopeChatModel dashScopeChatModel(DashScopeApi dashScopeApi) {
         return DashScopeChatModel.builder()
                 .dashScopeApi(dashScopeApi)
                 .build();
     }
-
     @Bean
     public ChatClient qwenChatClient(DashScopeChatModel dashScopeChatModel) {
         return ChatClient.builder(dashScopeChatModel).build();
+    }
+
+
+    @Bean
+    public DashScopeImageApi dashScopeImageApi() {
+        return new DashScopeImageApi(apiKey, baseUrl);
+    }
+    @Bean
+    public DashScopeImageModel dashScopeImageModel(DashScopeImageApi dashScopeImageApi) {
+        return new DashScopeImageModel(dashScopeImageApi);
     }
 }

@@ -1,4 +1,5 @@
 com\example\quickstart\config\DeepSeekConfig.class
 com\example\quickstart\QuickStartApplication.class
 com\example\quickstart\controller\AiChatController.class
+com\example\quickstart\controller\ImageController.class
 com\example\quickstart\config\QwenConfig.class

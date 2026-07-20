@@ -22,6 +22,9 @@ public class QwenConfig {
     @Value("${spring.ai.dashscope.base-url:https://dashscope.aliyuncs.com}")
     private String baseUrl;
 
+    @Value("${spring.ai.dashscope.image-base-url:https://dashscope.aliyuncs.com/api/v1/services/aigc/multimodal-generation/generation}")
+    private String imageBaseUrl;
+
     @Bean
     public DashScopeApi dashScopeApi() {
         return DashScopeApi.builder()
@@ -30,23 +33,24 @@ public class QwenConfig {
                 .build();
     }
 
-
     @Bean
     public DashScopeChatModel dashScopeChatModel(DashScopeApi dashScopeApi) {
         return DashScopeChatModel.builder()
                 .dashScopeApi(dashScopeApi)
+
                 .build();
     }
+
     @Bean
     public ChatClient qwenChatClient(DashScopeChatModel dashScopeChatModel) {
         return ChatClient.builder(dashScopeChatModel).build();
     }
 
-
     @Bean
     public DashScopeImageApi dashScopeImageApi() {
-        return new DashScopeImageApi(apiKey, baseUrl);
+        return new DashScopeImageApi(apiKey, imageBaseUrl);
     }
+
     @Bean
     public DashScopeImageModel dashScopeImageModel(DashScopeImageApi dashScopeImageApi) {
         return new DashScopeImageModel(dashScopeImageApi);

@@ -5,5 +5,4 @@
 .project
 .settings/
 .idea/
-
-/target/
+quick-start/target/classes

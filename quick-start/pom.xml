@@ -34,13 +34,19 @@
             <groupId>org.springframework.ai</groupId>
             <artifactId>spring-ai-deepseek</artifactId>
         </dependency>
-
+        <!-- Ollama 本地大模型支持 -->
+        <dependency>
+            <groupId>org.springframework.ai</groupId>
+            <artifactId>spring-ai-ollama</artifactId>
+        </dependency>
         <!-- 千问(Qwen/DashScope)模型支持 - Alibaba提供 -->
         <dependency>
             <groupId>com.alibaba.cloud.ai</groupId>
             <artifactId>spring-ai-alibaba-starter-dashscope</artifactId>
             <version>1.0.0.2</version>
         </dependency>
+
+
 
         <!-- Spring Boot Test -->
         <dependency>

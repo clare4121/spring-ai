@@ -30,7 +30,9 @@ public class ImageController {
      * @param request 图片生成请求体
      */
     @PostMapping("/generate")
-    public Map<String, Object> generateImage(@RequestBody ImageGenerateRequest request) {
+    public Map<String, Object> generateImage(
+            @RequestBody ImageGenerateRequest request,
+            @RequestHeader(value = "Authorization", required = false) String authorization) {
         String prompt = request.getInput().getMessages().get(0).getContent().get(0).getText();
 
         DashScopeImageOptions options = DashScopeImageOptions.builder()
@@ -46,6 +48,7 @@ public class ImageController {
                 "model", request.getModel(),
                 "size", request.getParameters().getSize(),
                 "n", request.getParameters().getN(),
+                "authorization", authorization != null ? authorization : "Bearer " + apiKey,
                 "response", response
         );
     }
